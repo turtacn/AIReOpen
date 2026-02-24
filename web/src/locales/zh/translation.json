@@ -1,0 +1,52 @@
+{
+  "app": {
+    "name": "AIReOpen 企业版",
+    "description": "安全 AI 网关"
+  },
+  "nav": {
+    "chat": "AI 对话空间",
+    "dashboard": "监控仪表盘",
+    "channels": "渠道管理",
+    "audit": "安全审计中心",
+    "knowledge": "企业知识库"
+  },
+  "chat": {
+    "newChat": "新会话",
+    "currentSession": "当前会话",
+    "previousChat": "历史会话 1",
+    "startPrompt": "开始与 AIReOpen 对话",
+    "inputPlaceholder": "输入您的消息...",
+    "disclaimer": "AI 生成内容可能不准确",
+    "config": "配置",
+    "model": "模型",
+    "temperature": "温度"
+  },
+  "dashboard": {
+    "cacheHitRate": "缓存命中率",
+    "costSaved": "节省成本",
+    "activeChannels": "活跃渠道",
+    "totalTokens": "总 Token",
+    "tokenUsage": "Token 用量分析",
+    "consumed": "消耗",
+    "saved": "节省"
+  },
+  "channelManager": {
+    "name": "名称",
+    "provider": "供应商",
+    "status": "状态",
+    "weight": "权重"
+  },
+  "auditCenter": {
+    "recentEvents": "最近事件",
+    "eventDetail": "事件详情",
+    "originalPrompt": "原始 Prompt",
+    "maskedPrompt": "脱敏 Prompt (发送给 LLM)",
+    "selectEvent": "选择一个事件以查看详情"
+  },
+  "knowledgeBase": {
+    "filename": "文件名",
+    "status": "状态",
+    "vectors": "向量数",
+    "id": "ID"
+  }
+}

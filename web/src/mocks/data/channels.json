@@ -1,0 +1,6 @@
+[
+  { "id": "1", "name": "GPT-4 Turbo", "provider": "OpenAI", "status": "active", "weight": 50 },
+  { "id": "2", "name": "Claude 3 Opus", "provider": "Anthropic", "status": "active", "weight": 30 },
+  { "id": "3", "name": "Qwen 2.5", "provider": "Alibaba", "status": "testing", "weight": 20 },
+  { "id": "4", "name": "Gemini 1.5 Pro", "provider": "Google", "status": "dead", "weight": 0 }
+]

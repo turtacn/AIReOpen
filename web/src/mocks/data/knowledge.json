@@ -1,0 +1,6 @@
+[
+  { "id": "kb_1", "filename": "Employee_Handbook_2024.pdf", "status": "ready", "vectors": 1250 },
+  { "id": "kb_2", "filename": "Q1_Financial_Report.docx", "status": "ready", "vectors": 850 },
+  { "id": "kb_3", "filename": "New_Product_Specs_v2.md", "status": "embedding", "vectors": 0 },
+  { "id": "kb_4", "filename": "Corrupted_File.txt", "status": "failed", "vectors": 0 }
+]

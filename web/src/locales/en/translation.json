@@ -1,0 +1,52 @@
+{
+  "app": {
+    "name": "AIReOpen Enterprise",
+    "description": "Secure AI Gateway"
+  },
+  "nav": {
+    "chat": "Chat Workspace",
+    "dashboard": "Dashboard",
+    "channels": "Channels",
+    "audit": "Audit Center",
+    "knowledge": "Knowledge Base"
+  },
+  "chat": {
+    "newChat": "New Chat",
+    "currentSession": "Current Session",
+    "previousChat": "Previous Chat 1",
+    "startPrompt": "Start a conversation with AIReOpen",
+    "inputPlaceholder": "Type your message...",
+    "disclaimer": "AI generated content may be inaccurate.",
+    "config": "Configuration",
+    "model": "Model",
+    "temperature": "Temperature"
+  },
+  "dashboard": {
+    "cacheHitRate": "Cache Hit Rate",
+    "costSaved": "Cost Saved",
+    "activeChannels": "Active Channels",
+    "totalTokens": "Total Tokens",
+    "tokenUsage": "Token Usage Analysis",
+    "consumed": "Consumed",
+    "saved": "Saved"
+  },
+  "channelManager": {
+    "name": "Name",
+    "provider": "Provider",
+    "status": "Status",
+    "weight": "Weight"
+  },
+  "auditCenter": {
+    "recentEvents": "Recent Events",
+    "eventDetail": "Event Detail",
+    "originalPrompt": "Original Prompt",
+    "maskedPrompt": "Masked Prompt (Sent to LLM)",
+    "selectEvent": "Select an event to view details"
+  },
+  "knowledgeBase": {
+    "filename": "Filename",
+    "status": "Status",
+    "vectors": "Vectors",
+    "id": "ID"
+  }
+}

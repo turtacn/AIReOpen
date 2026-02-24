@@ -1,0 +1,29 @@
+[
+  {
+    "id": "aud_001",
+    "timestamp": "2024-05-20T10:30:00Z",
+    "user": "alice@corp.com",
+    "originalPrompt": "Please summarize the Q2 financials for project Phoenix, my phone is +1-555-0199.",
+    "maskedPrompt": "Please summarize the Q2 financials for project [MASKED_PROJECT], my phone is [MASKED_PHONE].",
+    "riskLevel": "medium",
+    "actionTaken": "masked"
+  },
+  {
+    "id": "aud_002",
+    "timestamp": "2024-05-20T11:15:00Z",
+    "user": "bob@corp.com",
+    "originalPrompt": "How do I bypass the firewall to access restricted sites?",
+    "maskedPrompt": "How do I bypass the firewall to access restricted sites?",
+    "riskLevel": "high",
+    "actionTaken": "blocked"
+  },
+  {
+    "id": "aud_003",
+    "timestamp": "2024-05-20T12:00:00Z",
+    "user": "charlie@corp.com",
+    "originalPrompt": "Draft an email to client about the new API release.",
+    "maskedPrompt": "Draft an email to client about the new API release.",
+    "riskLevel": "low",
+    "actionTaken": "allowed"
+  }
+]
