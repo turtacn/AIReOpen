@@ -1,5 +1,9 @@
 import { useState, useCallback } from 'react';
 
+// Get base URL from environment variable, default to '/api/v1'
+// Note: axios uses base URL, but fetch needs full URL if on different domain
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api/v1';
+
 export function useChatStream() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -15,8 +19,18 @@ export function useChatStream() {
     let fullContent = '';
     let isCacheHit = false;
 
+    // Construct URL: Handle absolute vs relative
+    let url = '';
+    if (BASE_URL.startsWith('http')) {
+       url = `${BASE_URL.replace(/\/$/, '')}/chat/completions`;
+    } else {
+       // Relative path, ensure leading slash
+       const path = BASE_URL.startsWith('/') ? BASE_URL : `/${BASE_URL}`;
+       url = `${path.replace(/\/$/, '')}/chat/completions`;
+    }
+
     try {
-      const response = await fetch('/api/v1/chat/completions', {
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: [{ role: 'user', content: message }] }),

@@ -1,6 +1,6 @@
 # AIReOpen Web UI Quickstart
 
-This document describes how to build, run, and deploy the AIReOpen Frontend.
+This document describes how to build, run, and deploy the AIReOpen Frontend in different modes.
 
 ## Prerequisites
 
@@ -26,51 +26,51 @@ This document describes how to build, run, and deploy the AIReOpen Frontend.
 
 4. Open `http://localhost:5173` in your browser.
 
-## Mock Mode
+## Docker Deployment
 
-The application uses **Mock Service Worker (MSW)** to simulate backend APIs.
-- Mock data is located in `src/mocks/data/`.
-- Handlers are in `src/mocks/handlers/`.
-- To disable mocks (connect to real backend), set `import.meta.env.DEV` to false (production build automatically does this, unless configured otherwise).
+The Docker image supports two main scenarios: **Demo Mode** (standalone with mock data) and **Production Mode** (connected to real backend).
 
-## Production Build
+### 1. Scenario A: Demo Mode (Mock Data / Simulation)
 
-1. Run the build command:
-   ```bash
-   npm run build
-   ```
-   This generates static files in `dist/`.
+This builds a container that runs **independently of any backend**. It uses the internal Mock Service Worker (MSW) to simulate API responses with realistic test data. This is perfect for demos or testing when the backend is not ready.
 
-2. Preview the build:
-   ```bash
-   npm run preview
-   ```
+**Build:**
+```bash
+# VITE_API_MODE defaults to 'mock' in the Dockerfile
+docker build -t aireopen-web:demo ./web
+```
 
-## Docker Deployment (All-in-One)
+**Run:**
+```bash
+docker run -d -p 8080:80 --name aireopen-demo aireopen-web:demo
+```
 
-We provide a Dockerfile for multi-stage build and Nginx serving.
+Access the application at `http://localhost:8080`. You will see full data populated from the mock layer.
 
-1. Build the image:
-   ```bash
-   docker build -t aireopen-web:latest ./web
-   ```
+### 2. Scenario B: Production Mode (Real Backend)
 
-2. Run the container:
-   ```bash
-   docker run -p 8080:80 aireopen-web:latest
-   ```
+This builds a container configured to talk to a real backend API.
 
-3. Access the application at `http://localhost:8080`.
+**Build:**
+```bash
+# Pass 'real' mode and the API URL
+# Example backend URL: https://api.aireopen.example.com/v1
+docker build \
+  --build-arg VITE_API_MODE=real \
+  --build-arg VITE_API_BASE_URL=https://api.aireopen.example.com/v1 \
+  -t aireopen-webui:prod ./web
+```
 
-## Architecture Highlights
+**Run:**
+```bash
+docker run -d -p 80:80 --name aireopen-prod aireopen-webui:prod
+```
 
-- **Framework**: React 18 + Vite + TypeScript
-- **Styling**: Tailwind CSS
-- **State**: React Hooks + Context
-- **API**: Axios with Interceptors
-- **Mocking**: MSW (OpenAPI 3.0 compliant)
-- **Charts**: Recharts
-- **Streaming**: Native fetch with TextDecoder for SSE simulation
+### 3. Modifying Test Data (Simulation)
+
+To customize the simulation data without changing code structure:
+1. Edit the JSON files in `web/src/mocks/data/` (e.g., `channels.json`, `dashboard.json`).
+2. Rebuild the Demo Mode image.
 
 ## Project Structure
 
@@ -84,6 +84,6 @@ web/
 │   ├── pages/              # Module pages (Dashboard, Chat, etc.)
 │   ├── services/           # API Adapter and typed calls
 │   └── router.tsx          # Route definitions with Lazy Loading
-├── Dockerfile              # Container definition
+├── Dockerfile              # Multi-stage build definition
 └── nginx.conf              # Nginx configuration
 ```
